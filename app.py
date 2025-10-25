@@ -35,10 +35,10 @@ if uploaded_file:
         font_flags = 0
         if bold: font_flags += 2
         if italic: font_flags += 1
-        page.insert_text((x, y), input_text, fontsize=font_size, color=fitz.utils.getColor(color), fontfile=None, render_mode=0, fontname="helv", rotate=0, morph=None, stroke_color=None, fill_opacity=1.0, stroke_opacity=1.0, overlay=True, flags=font_flags)
+        page.insert_text((x, y), input_text, fontsize=font_size, color=fitz.utils.getColor(color), fontname="helv", flags=font_flags)
         st.success("文字を挿入しました")
 
-    # 文字の削除（簡易：矩形で塗りつぶし）
+    # 文字の削除（矩形塗りつぶし）
     st.subheader("🧹 文字の削除（矩形指定）")
     rx1 = st.number_input("削除範囲X1", value=100)
     ry1 = st.number_input("削除範囲Y1", value=100)
