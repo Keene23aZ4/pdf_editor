@@ -6,7 +6,7 @@ from googletrans import Translator
 from streamlit_drawable_canvas import st_canvas
 
 st.set_page_config(page_title="PDF編集アプリ", layout="wide")
-st.title("📄 PDFを見ながら直接編集")
+st.title("📄 PDFを直接編集")
 
 translator = Translator()
 
@@ -82,3 +82,4 @@ if uploaded_file:
     output = io.BytesIO()
     doc.save(output)
     st.download_button("編集済みPDFをダウンロード", data=output.getvalue(), file_name="edited.pdf", mime="application/pdf")
+
