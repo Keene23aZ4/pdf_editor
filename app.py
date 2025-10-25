@@ -17,10 +17,10 @@ if uploaded_file:
     page_num = st.sidebar.number_input("編集するページ番号", min_value=0, max_value=len(doc)-1, value=0)
     page = doc[page_num]
 
-    # PDFページを画像として表示
-    pix = page.get_pixmap()
+    # PDFページを画像として表示（安定版）
+    pix = page.get_pixmap(matrix=fitz.Matrix(1, 1))  # 解像度調整
     img_bytes = pix.tobytes("png")
-    image = Image.open(io.BytesIO(img_bytes))
+    image = Image.open(io.BytesIO(img_bytes)).convert("RGBA")  # PIL形式に変換
 
     st.subheader("🖼 ページプレビュー（クリックで編集）")
     canvas_result = st_canvas(
@@ -28,10 +28,10 @@ if uploaded_file:
         stroke_width=1,
         background_image=image,
         update_streamlit=True,
-        height=pix.height,
-        width=pix.width,
+        height=image.height,
+        width=image.width,
         drawing_mode="point",
-        key="canvas",
+        key=f"canvas_{page_num}",
     )
 
     clicked = False
