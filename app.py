@@ -34,9 +34,8 @@ if uploaded_file:
 
         st.markdown("#### 🖼 画像挿入")
         image_file = st.file_uploader("画像ファイル", type=["png", "jpg", "jpeg"])
-        img_width = st.number_input("画像幅", value=100)
-        img_height = st.number_input("画像高さ", value=100)
-
+        img_width = st.number_input("画像幅", value=100, key="img_width")
+        img_height = st.number_input("画像高さ", value=100, key="img_height")
         st.markdown("#### 🌐 翻訳")
         tx1 = st.number_input("範囲X1", value=50)
         ty1 = st.number_input("範囲Y1", value=50)
@@ -118,5 +117,6 @@ if uploaded_file:
     output = io.BytesIO()
     doc.save(output)
     st.download_button("編集済みPDFをダウンロード", data=output.getvalue(), file_name="edited.pdf", mime="application/pdf")
+
 
 
