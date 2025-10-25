@@ -3,3 +3,4 @@ PyMuPDF==1.23.6
 pdfplumber==0.10.3
 googletrans==4.0.0rc1
 Pillow==10.2.0
+streamlit-drawable-canvas==0.8.0
